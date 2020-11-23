@@ -18,29 +18,29 @@ public class Scan {
 
         String expression = scanner.nextLine().replaceAll(" ", "").toUpperCase();
         String[] operands = expression.split("[+-/*]");
-        int romanFlagA = 0;
-        int romanFlagB = 0;
+        int isRoman1 = 0;
+        int isRoman2 = 0;
         for (int i = 0; i < roman.length; i++) {
             if (roman[i].equals(operands[0])) {
-                romanFlagA = 1;
+                isRoman1 = 1;
             }
             if (roman[i].equals(operands[1])) {
-                romanFlagB = 1;
+                isRoman2 = 1;
             }
         }
 
-        if ((romanFlagA == 0) && (romanFlagB == 1)) {
+        if ((isRoman1 == 0) && (isRoman2 == 1)) {
             throw new IllegalArgumentException("Введите только 2 одинаковых типов чисел!!!");
-        }   else if ((romanFlagA == 1) && (romanFlagB == 0))    {
+        }   else if ((isRoman1 == 1) && (isRoman2 == 0))    {
             throw new IllegalArgumentException("Введите только 2 одинаковых типов чисел!!!");
         }
         operation = expression.charAt(operands[0].length());
 
-        if ((romanFlagA == 1) && (romanFlagB == 1)) {
+        if ((isRoman1 == 1) && (isRoman2 == 1)) {
             romanNum1 = convert.romanToArab(operands[0]);
             romanNum2 = convert.romanToArab(operands[1]);
             romanIs = true;
-        }   else if ((romanFlagA == 0) && (romanFlagB == 0)) {
+        }   else if ((isRoman1 == 0) && (isRoman2 == 0)) {
             num1 = Integer.parseInt(operands[0]);
             num2 = Integer.parseInt(operands[1]);
             romanIs = false;
